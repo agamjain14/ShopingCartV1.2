@@ -1,0 +1,39 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+
+import { ReactiveFormsModule } from '@angular/forms';
+import { AppComponent } from './app.component';
+import { HomeComponent } from './component/home/home.component';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { RegisterComponent } from './component/register/register.component';
+import { LoginComponent } from './component/login/login.component';
+import { ProfileComponent } from './component/profile/profile.component';
+import { NavbarComponent } from './component/navbar/navbar.component';
+import { AuthService } from './services/auth.service';
+import { AppRoutingModule } from './app-routing.module';
+import { AuthGuard } from './guards/auth.guard';
+import { NotAuthGuard } from './guards/notAuth.guard';
+
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    DashboardComponent,
+    RegisterComponent,
+    LoginComponent,
+    ProfileComponent,
+    NavbarComponent
+  ],
+  imports: [
+    BrowserModule,
+    HttpModule,
+    ReactiveFormsModule,
+    AppRoutingModule
+  ],
+  providers: [AuthService, AuthGuard, NotAuthGuard],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
