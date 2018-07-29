@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { AuthService } from '../../services/auth.service';
 
@@ -9,6 +9,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class ProfileComponent implements OnInit {
 
+
   username;
   email;
 
@@ -16,6 +17,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.authService.getProfile().subscribe(profile => {
+      console.log('profile.user from profile ' + profile.user.username);
       this.username = profile.user.username;
       this.email = profile.user.email;
     });

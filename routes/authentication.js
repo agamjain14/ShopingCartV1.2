@@ -150,7 +150,7 @@ module.exports = (router) => {
 
 // BELOW METHOD TAKES THE DECRYPTED TOKEN FIND THE USER
   router.get('/profile', (req, res) => {
-    User.findOne({ _id: req.decoded.userId }).select('username email').exec((err, user) => {
+    User.findOne({ _id: req.decoded.userId }).select('username email isAdmin').exec((err, user) => {
       if (err) {
         res.json({ success: false, message: err});
       } else {

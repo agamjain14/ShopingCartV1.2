@@ -4,11 +4,15 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 // import { map } from "rxjs/operators";
 // import { map } from 'rxjs/operators';
 
+import { switchMap } from 'rxjs/operators';
 import { tokenNotExpired } from 'angular2-jwt';
-
+import { User } from '../shared/user';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/observable/of';
 @Injectable()
 export class AuthService {
-
+  private subject = new Subject<any>();
   domain = 'http://localhost:3000';
   authToken;
   user;
@@ -65,7 +69,10 @@ export class AuthService {
     return this.http.get(this.domain + '/authentication/profile', this.options).map(res => res.json());
   }
 
+
+
   loggedIn() {
     return tokenNotExpired();
   }
+
 }
